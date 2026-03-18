@@ -1,0 +1,3786 @@
+{
+  "schema_version": "1.0",
+  "source_video": "Class_8_cctv_video_1.mov",
+  "total_frames_original": 7169,
+  "total_frames_kept": 623,
+  "compression_ratio": 0.9131,
+  "processing_speed_x": 1.19,
+  "fps_original": 58.514487824785746,
+  "fps_output": 12.0,
+  "duration_sec": 122.51666666666667,
+  "frames_with_faces": 40,
+  "frames_dropped_phash": 1607,
+  "frames_dropped_motion": 160,
+  "segments": [
+    {
+      "start_frame": 0,
+      "end_frame": 24,
+      "start_sec": 0.0,
+      "end_sec": 0.4102
+    },
+    {
+      "start_frame": 192,
+      "end_frame": 1506,
+      "start_sec": 3.2812,
+      "end_sec": 25.7372
+    },
+    {
+      "start_frame": 1632,
+      "end_frame": 2418,
+      "start_sec": 27.8905,
+      "end_sec": 41.3231
+    },
+    {
+      "start_frame": 2514,
+      "end_frame": 3402,
+      "start_sec": 42.9637,
+      "end_sec": 58.1394
+    },
+    {
+      "start_frame": 3579,
+      "end_frame": 7146,
+      "start_sec": 61.1643,
+      "end_sec": 122.1236
+    }
+  ],
+  "kept_frame_list": [
+    {
+      "frame_index": 0,
+      "timestamp_sec": 0.0,
+      "reason": "first_frame",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6,
+      "timestamp_sec": 0.1025,
+      "reason": "motion:0.466",
+      "face_detected": false
+    },
+    {
+      "frame_index": 18,
+      "timestamp_sec": 0.3076,
+      "reason": "motion:0.124",
+      "face_detected": false
+    },
+    {
+      "frame_index": 24,
+      "timestamp_sec": 0.4102,
+      "reason": "motion:0.150",
+      "face_detected": false
+    },
+    {
+      "frame_index": 192,
+      "timestamp_sec": 3.2812,
+      "reason": "motion:0.059",
+      "face_detected": false
+    },
+    {
+      "frame_index": 279,
+      "timestamp_sec": 4.768,
+      "reason": "motion:0.068",
+      "face_detected": false
+    },
+    {
+      "frame_index": 294,
+      "timestamp_sec": 5.0244,
+      "reason": "motion:0.068",
+      "face_detected": false
+    },
+    {
+      "frame_index": 312,
+      "timestamp_sec": 5.332,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 321,
+      "timestamp_sec": 5.4858,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 342,
+      "timestamp_sec": 5.8447,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 348,
+      "timestamp_sec": 5.9472,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 378,
+      "timestamp_sec": 6.4599,
+      "reason": "motion:0.091",
+      "face_detected": false
+    },
+    {
+      "frame_index": 381,
+      "timestamp_sec": 6.5112,
+      "reason": "motion:0.074",
+      "face_detected": false
+    },
+    {
+      "frame_index": 402,
+      "timestamp_sec": 6.8701,
+      "reason": "motion:0.067",
+      "face_detected": false
+    },
+    {
+      "frame_index": 408,
+      "timestamp_sec": 6.9726,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 411,
+      "timestamp_sec": 7.0239,
+      "reason": "motion:0.078",
+      "face_detected": false
+    },
+    {
+      "frame_index": 429,
+      "timestamp_sec": 7.3315,
+      "reason": "motion:0.050",
+      "face_detected": false
+    },
+    {
+      "frame_index": 450,
+      "timestamp_sec": 7.6904,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 465,
+      "timestamp_sec": 7.9467,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 483,
+      "timestamp_sec": 8.2544,
+      "reason": "motion:0.057",
+      "face_detected": false
+    },
+    {
+      "frame_index": 510,
+      "timestamp_sec": 8.7158,
+      "reason": "motion:0.050",
+      "face_detected": false
+    },
+    {
+      "frame_index": 534,
+      "timestamp_sec": 9.1259,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 546,
+      "timestamp_sec": 9.331,
+      "reason": "motion:0.059",
+      "face_detected": false
+    },
+    {
+      "frame_index": 567,
+      "timestamp_sec": 9.6899,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 618,
+      "timestamp_sec": 10.5615,
+      "reason": "motion:0.070",
+      "face_detected": false
+    },
+    {
+      "frame_index": 642,
+      "timestamp_sec": 10.9716,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 669,
+      "timestamp_sec": 11.4331,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 708,
+      "timestamp_sec": 12.0996,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 786,
+      "timestamp_sec": 13.4326,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 789,
+      "timestamp_sec": 13.4838,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 798,
+      "timestamp_sec": 13.6376,
+      "reason": "motion:0.057",
+      "face_detected": false
+    },
+    {
+      "frame_index": 813,
+      "timestamp_sec": 13.894,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 822,
+      "timestamp_sec": 14.0478,
+      "reason": "motion:0.074",
+      "face_detected": false
+    },
+    {
+      "frame_index": 837,
+      "timestamp_sec": 14.3041,
+      "reason": "motion:0.129",
+      "face_detected": false
+    },
+    {
+      "frame_index": 843,
+      "timestamp_sec": 14.4067,
+      "reason": "motion:0.079",
+      "face_detected": false
+    },
+    {
+      "frame_index": 846,
+      "timestamp_sec": 14.458,
+      "reason": "motion:0.085",
+      "face_detected": false
+    },
+    {
+      "frame_index": 849,
+      "timestamp_sec": 14.5092,
+      "reason": "motion:0.111",
+      "face_detected": false
+    },
+    {
+      "frame_index": 855,
+      "timestamp_sec": 14.6118,
+      "reason": "motion:0.114",
+      "face_detected": false
+    },
+    {
+      "frame_index": 858,
+      "timestamp_sec": 14.663,
+      "reason": "motion:0.117",
+      "face_detected": false
+    },
+    {
+      "frame_index": 861,
+      "timestamp_sec": 14.7143,
+      "reason": "motion:0.160",
+      "face_detected": false
+    },
+    {
+      "frame_index": 864,
+      "timestamp_sec": 14.7656,
+      "reason": "motion:0.147",
+      "face_detected": false
+    },
+    {
+      "frame_index": 870,
+      "timestamp_sec": 14.8681,
+      "reason": "motion:0.174",
+      "face_detected": false
+    },
+    {
+      "frame_index": 873,
+      "timestamp_sec": 14.9194,
+      "reason": "motion:0.186",
+      "face_detected": false
+    },
+    {
+      "frame_index": 876,
+      "timestamp_sec": 14.9707,
+      "reason": "motion:0.196",
+      "face_detected": false
+    },
+    {
+      "frame_index": 879,
+      "timestamp_sec": 15.0219,
+      "reason": "motion:0.258",
+      "face_detected": false
+    },
+    {
+      "frame_index": 882,
+      "timestamp_sec": 15.0732,
+      "reason": "motion:0.240",
+      "face_detected": false
+    },
+    {
+      "frame_index": 885,
+      "timestamp_sec": 15.1245,
+      "reason": "motion:0.229",
+      "face_detected": false
+    },
+    {
+      "frame_index": 888,
+      "timestamp_sec": 15.1757,
+      "reason": "motion:0.184",
+      "face_detected": false
+    },
+    {
+      "frame_index": 891,
+      "timestamp_sec": 15.227,
+      "reason": "motion:0.191",
+      "face_detected": false
+    },
+    {
+      "frame_index": 894,
+      "timestamp_sec": 15.2783,
+      "reason": "motion:0.193",
+      "face_detected": false
+    },
+    {
+      "frame_index": 900,
+      "timestamp_sec": 15.3808,
+      "reason": "motion:0.264",
+      "face_detected": false
+    },
+    {
+      "frame_index": 906,
+      "timestamp_sec": 15.4833,
+      "reason": "motion:0.145",
+      "face_detected": false
+    },
+    {
+      "frame_index": 909,
+      "timestamp_sec": 15.5346,
+      "reason": "motion:0.143",
+      "face_detected": false
+    },
+    {
+      "frame_index": 912,
+      "timestamp_sec": 15.5859,
+      "reason": "motion:0.125",
+      "face_detected": false
+    },
+    {
+      "frame_index": 915,
+      "timestamp_sec": 15.6372,
+      "reason": "motion:0.130",
+      "face_detected": false
+    },
+    {
+      "frame_index": 918,
+      "timestamp_sec": 15.6884,
+      "reason": "motion:0.172",
+      "face_detected": false
+    },
+    {
+      "frame_index": 921,
+      "timestamp_sec": 15.7397,
+      "reason": "motion:0.233",
+      "face_detected": false
+    },
+    {
+      "frame_index": 924,
+      "timestamp_sec": 15.791,
+      "reason": "motion:0.195",
+      "face_detected": false
+    },
+    {
+      "frame_index": 927,
+      "timestamp_sec": 15.8422,
+      "reason": "motion:0.174",
+      "face_detected": false
+    },
+    {
+      "frame_index": 930,
+      "timestamp_sec": 15.8935,
+      "reason": "motion:0.203",
+      "face_detected": false
+    },
+    {
+      "frame_index": 933,
+      "timestamp_sec": 15.9448,
+      "reason": "motion:0.214",
+      "face_detected": false
+    },
+    {
+      "frame_index": 936,
+      "timestamp_sec": 15.996,
+      "reason": "motion:0.205",
+      "face_detected": false
+    },
+    {
+      "frame_index": 942,
+      "timestamp_sec": 16.0986,
+      "reason": "motion:0.226",
+      "face_detected": false
+    },
+    {
+      "frame_index": 966,
+      "timestamp_sec": 16.5087,
+      "reason": "motion:0.092",
+      "face_detected": false
+    },
+    {
+      "frame_index": 978,
+      "timestamp_sec": 16.7138,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 984,
+      "timestamp_sec": 16.8163,
+      "reason": "motion:0.109",
+      "face_detected": false
+    },
+    {
+      "frame_index": 990,
+      "timestamp_sec": 16.9189,
+      "reason": "motion:0.148",
+      "face_detected": false
+    },
+    {
+      "frame_index": 993,
+      "timestamp_sec": 16.9702,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 996,
+      "timestamp_sec": 17.0214,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1002,
+      "timestamp_sec": 17.124,
+      "reason": "motion:0.125",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1005,
+      "timestamp_sec": 17.1752,
+      "reason": "motion:0.129",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1011,
+      "timestamp_sec": 17.2778,
+      "reason": "motion:0.125",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1020,
+      "timestamp_sec": 17.4316,
+      "reason": "motion:0.134",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1026,
+      "timestamp_sec": 17.5341,
+      "reason": "motion:0.096",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1035,
+      "timestamp_sec": 17.6879,
+      "reason": "motion:0.103",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1044,
+      "timestamp_sec": 17.8417,
+      "reason": "motion:0.090",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1047,
+      "timestamp_sec": 17.893,
+      "reason": "motion:0.091",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1053,
+      "timestamp_sec": 17.9955,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1059,
+      "timestamp_sec": 18.0981,
+      "reason": "motion:0.124",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1062,
+      "timestamp_sec": 18.1494,
+      "reason": "motion:0.122",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1071,
+      "timestamp_sec": 18.3032,
+      "reason": "motion:0.178",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1074,
+      "timestamp_sec": 18.3544,
+      "reason": "motion:0.149",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1077,
+      "timestamp_sec": 18.4057,
+      "reason": "motion:0.157",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1080,
+      "timestamp_sec": 18.457,
+      "reason": "motion:0.151",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1086,
+      "timestamp_sec": 18.5595,
+      "reason": "motion:0.158",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1092,
+      "timestamp_sec": 18.662,
+      "reason": "motion:0.125",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1098,
+      "timestamp_sec": 18.7646,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1104,
+      "timestamp_sec": 18.8671,
+      "reason": "motion:0.083",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1107,
+      "timestamp_sec": 18.9184,
+      "reason": "motion:0.084",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1122,
+      "timestamp_sec": 19.1747,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1149,
+      "timestamp_sec": 19.6362,
+      "reason": "motion:0.084",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1155,
+      "timestamp_sec": 19.7387,
+      "reason": "motion:0.086",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1158,
+      "timestamp_sec": 19.79,
+      "reason": "motion:0.082",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1161,
+      "timestamp_sec": 19.8412,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1191,
+      "timestamp_sec": 20.3539,
+      "reason": "motion:0.051",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1212,
+      "timestamp_sec": 20.7128,
+      "reason": "motion:0.085",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1221,
+      "timestamp_sec": 20.8666,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 1227,
+      "timestamp_sec": 20.9692,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1236,
+      "timestamp_sec": 21.123,
+      "reason": "motion:0.074",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1239,
+      "timestamp_sec": 21.1742,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1248,
+      "timestamp_sec": 21.3281,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1251,
+      "timestamp_sec": 21.3793,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1257,
+      "timestamp_sec": 21.4819,
+      "reason": "motion:0.102",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1272,
+      "timestamp_sec": 21.7382,
+      "reason": "motion:0.054",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1305,
+      "timestamp_sec": 22.3022,
+      "reason": "motion:0.059",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1314,
+      "timestamp_sec": 22.456,
+      "reason": "motion:0.055",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1326,
+      "timestamp_sec": 22.6611,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1332,
+      "timestamp_sec": 22.7636,
+      "reason": "motion:0.070",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1341,
+      "timestamp_sec": 22.9174,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 1353,
+      "timestamp_sec": 23.1225,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 1374,
+      "timestamp_sec": 23.4814,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1392,
+      "timestamp_sec": 23.789,
+      "reason": "motion:0.092",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1407,
+      "timestamp_sec": 24.0453,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1413,
+      "timestamp_sec": 24.1479,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 1434,
+      "timestamp_sec": 24.5068,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1473,
+      "timestamp_sec": 25.1733,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1506,
+      "timestamp_sec": 25.7372,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1632,
+      "timestamp_sec": 27.8905,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1686,
+      "timestamp_sec": 28.8134,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1719,
+      "timestamp_sec": 29.3773,
+      "reason": "motion:0.070",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1722,
+      "timestamp_sec": 29.4286,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1746,
+      "timestamp_sec": 29.8388,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1773,
+      "timestamp_sec": 30.3002,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1809,
+      "timestamp_sec": 30.9154,
+      "reason": "motion:0.051",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1818,
+      "timestamp_sec": 31.0692,
+      "reason": "motion:0.127",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1833,
+      "timestamp_sec": 31.3256,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1845,
+      "timestamp_sec": 31.5307,
+      "reason": "motion:0.071",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1872,
+      "timestamp_sec": 31.9921,
+      "reason": "motion:0.065",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1917,
+      "timestamp_sec": 32.7611,
+      "reason": "motion:0.050",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1953,
+      "timestamp_sec": 33.3763,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1965,
+      "timestamp_sec": 33.5814,
+      "reason": "motion:0.102",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1974,
+      "timestamp_sec": 33.7352,
+      "reason": "motion:0.088",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1980,
+      "timestamp_sec": 33.8378,
+      "reason": "motion:0.111",
+      "face_detected": false
+    },
+    {
+      "frame_index": 1986,
+      "timestamp_sec": 33.9403,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2004,
+      "timestamp_sec": 34.2479,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2007,
+      "timestamp_sec": 34.2992,
+      "reason": "motion:0.112",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2016,
+      "timestamp_sec": 34.453,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2031,
+      "timestamp_sec": 34.7094,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2037,
+      "timestamp_sec": 34.8119,
+      "reason": "motion:0.105",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2061,
+      "timestamp_sec": 35.222,
+      "reason": "motion:0.178",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2067,
+      "timestamp_sec": 35.3246,
+      "reason": "motion:0.124",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2070,
+      "timestamp_sec": 35.3759,
+      "reason": "motion:0.133",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2073,
+      "timestamp_sec": 35.4271,
+      "reason": "motion:0.116",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2082,
+      "timestamp_sec": 35.5809,
+      "reason": "motion:0.122",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2085,
+      "timestamp_sec": 35.6322,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2091,
+      "timestamp_sec": 35.7347,
+      "reason": "motion:0.344",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2094,
+      "timestamp_sec": 35.786,
+      "reason": "motion:0.162",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2103,
+      "timestamp_sec": 35.9398,
+      "reason": "motion:0.153",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2109,
+      "timestamp_sec": 36.0424,
+      "reason": "motion:0.164",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2121,
+      "timestamp_sec": 36.2474,
+      "reason": "motion:0.180",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2124,
+      "timestamp_sec": 36.2987,
+      "reason": "motion:0.228",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2127,
+      "timestamp_sec": 36.35,
+      "reason": "motion:0.118",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2130,
+      "timestamp_sec": 36.4012,
+      "reason": "motion:0.133",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2136,
+      "timestamp_sec": 36.5038,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2145,
+      "timestamp_sec": 36.6576,
+      "reason": "motion:0.165",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2148,
+      "timestamp_sec": 36.7089,
+      "reason": "motion:0.184",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2151,
+      "timestamp_sec": 36.7601,
+      "reason": "motion:0.181",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2154,
+      "timestamp_sec": 36.8114,
+      "reason": "motion:0.237",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2169,
+      "timestamp_sec": 37.0677,
+      "reason": "motion:0.119",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2172,
+      "timestamp_sec": 37.119,
+      "reason": "motion:0.115",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2193,
+      "timestamp_sec": 37.4779,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2199,
+      "timestamp_sec": 37.5804,
+      "reason": "motion:0.087",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2202,
+      "timestamp_sec": 37.6317,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2205,
+      "timestamp_sec": 37.683,
+      "reason": "motion:0.074",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2214,
+      "timestamp_sec": 37.8368,
+      "reason": "motion:0.151",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2217,
+      "timestamp_sec": 37.8881,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2220,
+      "timestamp_sec": 37.9393,
+      "reason": "motion:0.143",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2223,
+      "timestamp_sec": 37.9906,
+      "reason": "motion:0.116",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2226,
+      "timestamp_sec": 38.0419,
+      "reason": "motion:0.116",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2232,
+      "timestamp_sec": 38.1444,
+      "reason": "motion:0.319",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2235,
+      "timestamp_sec": 38.1957,
+      "reason": "motion:0.265",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2247,
+      "timestamp_sec": 38.4007,
+      "reason": "motion:0.141",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2253,
+      "timestamp_sec": 38.5033,
+      "reason": "motion:0.140",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2262,
+      "timestamp_sec": 38.6571,
+      "reason": "motion:0.169",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2286,
+      "timestamp_sec": 39.0672,
+      "reason": "motion:0.175",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2292,
+      "timestamp_sec": 39.1698,
+      "reason": "motion:0.156",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2301,
+      "timestamp_sec": 39.3236,
+      "reason": "motion:0.068",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2316,
+      "timestamp_sec": 39.5799,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2325,
+      "timestamp_sec": 39.7337,
+      "reason": "motion:0.055",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2331,
+      "timestamp_sec": 39.8363,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2334,
+      "timestamp_sec": 39.8876,
+      "reason": "motion:0.079",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2337,
+      "timestamp_sec": 39.9388,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2346,
+      "timestamp_sec": 40.0926,
+      "reason": "motion:0.057",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2349,
+      "timestamp_sec": 40.1439,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2370,
+      "timestamp_sec": 40.5028,
+      "reason": "motion:0.050",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2382,
+      "timestamp_sec": 40.7079,
+      "reason": "motion:0.055",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2391,
+      "timestamp_sec": 40.8617,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2397,
+      "timestamp_sec": 40.9642,
+      "reason": "motion:0.065",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2409,
+      "timestamp_sec": 41.1693,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2418,
+      "timestamp_sec": 41.3231,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2514,
+      "timestamp_sec": 42.9637,
+      "reason": "motion:0.052",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2541,
+      "timestamp_sec": 43.4251,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2553,
+      "timestamp_sec": 43.6302,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2589,
+      "timestamp_sec": 44.2455,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2598,
+      "timestamp_sec": 44.3993,
+      "reason": "motion:0.192",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2610,
+      "timestamp_sec": 44.6043,
+      "reason": "motion:0.213",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2613,
+      "timestamp_sec": 44.6556,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2619,
+      "timestamp_sec": 44.7581,
+      "reason": "motion:0.240",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2622,
+      "timestamp_sec": 44.8094,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2637,
+      "timestamp_sec": 45.0658,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2652,
+      "timestamp_sec": 45.3221,
+      "reason": "motion:0.134",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2658,
+      "timestamp_sec": 45.4246,
+      "reason": "motion:0.315",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2664,
+      "timestamp_sec": 45.5272,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2667,
+      "timestamp_sec": 45.5785,
+      "reason": "motion:0.183",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2673,
+      "timestamp_sec": 45.681,
+      "reason": "motion:0.187",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2679,
+      "timestamp_sec": 45.7835,
+      "reason": "motion:0.437",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2694,
+      "timestamp_sec": 46.0399,
+      "reason": "motion:0.160",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2703,
+      "timestamp_sec": 46.1937,
+      "reason": "motion:0.102",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2706,
+      "timestamp_sec": 46.245,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2715,
+      "timestamp_sec": 46.3988,
+      "reason": "motion:0.169",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2724,
+      "timestamp_sec": 46.5526,
+      "reason": "motion:0.214",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2733,
+      "timestamp_sec": 46.7064,
+      "reason": "motion:0.222",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2748,
+      "timestamp_sec": 46.9627,
+      "reason": "motion:0.195",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2757,
+      "timestamp_sec": 47.1165,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2799,
+      "timestamp_sec": 47.8343,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2808,
+      "timestamp_sec": 47.9881,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2847,
+      "timestamp_sec": 48.6546,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2853,
+      "timestamp_sec": 48.7572,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2877,
+      "timestamp_sec": 49.1673,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 2889,
+      "timestamp_sec": 49.3724,
+      "reason": "motion:0.079",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2892,
+      "timestamp_sec": 49.4237,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2922,
+      "timestamp_sec": 49.9364,
+      "reason": "motion:0.309",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2934,
+      "timestamp_sec": 50.1414,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2952,
+      "timestamp_sec": 50.449,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2961,
+      "timestamp_sec": 50.6029,
+      "reason": "motion:0.127",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2964,
+      "timestamp_sec": 50.6541,
+      "reason": "motion:0.216",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2973,
+      "timestamp_sec": 50.8079,
+      "reason": "motion:0.109",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2976,
+      "timestamp_sec": 50.8592,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2979,
+      "timestamp_sec": 50.9105,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2982,
+      "timestamp_sec": 50.9617,
+      "reason": "motion:0.134",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2985,
+      "timestamp_sec": 51.013,
+      "reason": "motion:0.141",
+      "face_detected": false
+    },
+    {
+      "frame_index": 2994,
+      "timestamp_sec": 51.1668,
+      "reason": "motion:0.114",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3000,
+      "timestamp_sec": 51.2694,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3012,
+      "timestamp_sec": 51.4744,
+      "reason": "motion:0.123",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3015,
+      "timestamp_sec": 51.5257,
+      "reason": "motion:0.132",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3060,
+      "timestamp_sec": 52.2947,
+      "reason": "motion:0.074",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3069,
+      "timestamp_sec": 52.4485,
+      "reason": "motion:0.117",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3087,
+      "timestamp_sec": 52.7562,
+      "reason": "motion:0.146",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3093,
+      "timestamp_sec": 52.8587,
+      "reason": "motion:0.139",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3111,
+      "timestamp_sec": 53.1663,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3117,
+      "timestamp_sec": 53.2689,
+      "reason": "motion:0.235",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3123,
+      "timestamp_sec": 53.3714,
+      "reason": "motion:0.138",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3141,
+      "timestamp_sec": 53.679,
+      "reason": "motion:0.082",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3165,
+      "timestamp_sec": 54.0892,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3177,
+      "timestamp_sec": 54.2942,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3183,
+      "timestamp_sec": 54.3968,
+      "reason": "motion:0.091",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3189,
+      "timestamp_sec": 54.4993,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3213,
+      "timestamp_sec": 54.9095,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3225,
+      "timestamp_sec": 55.1146,
+      "reason": "motion:0.167",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3231,
+      "timestamp_sec": 55.2171,
+      "reason": "motion:0.086",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3249,
+      "timestamp_sec": 55.5247,
+      "reason": "motion:0.214",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3270,
+      "timestamp_sec": 55.8836,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3276,
+      "timestamp_sec": 55.9861,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3291,
+      "timestamp_sec": 56.2425,
+      "reason": "motion:0.216",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3300,
+      "timestamp_sec": 56.3963,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3303,
+      "timestamp_sec": 56.4476,
+      "reason": "motion:0.137",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3309,
+      "timestamp_sec": 56.5501,
+      "reason": "motion:0.057",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3315,
+      "timestamp_sec": 56.6526,
+      "reason": "motion:0.103",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3321,
+      "timestamp_sec": 56.7552,
+      "reason": "motion:0.118",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3402,
+      "timestamp_sec": 58.1394,
+      "reason": "motion:0.092",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3579,
+      "timestamp_sec": 61.1643,
+      "reason": "motion:0.107",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3600,
+      "timestamp_sec": 61.5232,
+      "reason": "motion:0.171",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3612,
+      "timestamp_sec": 61.7283,
+      "reason": "motion:0.115",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3624,
+      "timestamp_sec": 61.9334,
+      "reason": "motion:0.242",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3630,
+      "timestamp_sec": 62.0359,
+      "reason": "motion:0.289",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3636,
+      "timestamp_sec": 62.1385,
+      "reason": "motion:0.287",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3642,
+      "timestamp_sec": 62.241,
+      "reason": "motion:0.220",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3651,
+      "timestamp_sec": 62.3948,
+      "reason": "motion:0.226",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3660,
+      "timestamp_sec": 62.5486,
+      "reason": "motion:0.115",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3675,
+      "timestamp_sec": 62.805,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3684,
+      "timestamp_sec": 62.9588,
+      "reason": "motion:0.238",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3687,
+      "timestamp_sec": 63.01,
+      "reason": "motion:0.086",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3696,
+      "timestamp_sec": 63.1638,
+      "reason": "motion:0.083",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3705,
+      "timestamp_sec": 63.3177,
+      "reason": "motion:0.201",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3711,
+      "timestamp_sec": 63.4202,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3714,
+      "timestamp_sec": 63.4715,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3717,
+      "timestamp_sec": 63.5227,
+      "reason": "motion:0.117",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3741,
+      "timestamp_sec": 63.9329,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3756,
+      "timestamp_sec": 64.1892,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3807,
+      "timestamp_sec": 65.0608,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3819,
+      "timestamp_sec": 65.2659,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 3834,
+      "timestamp_sec": 65.5222,
+      "reason": "motion:0.078",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3846,
+      "timestamp_sec": 65.7273,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3885,
+      "timestamp_sec": 66.3938,
+      "reason": "motion:0.109",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3903,
+      "timestamp_sec": 66.7014,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3912,
+      "timestamp_sec": 66.8552,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3930,
+      "timestamp_sec": 67.1629,
+      "reason": "motion:0.233",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3936,
+      "timestamp_sec": 67.2654,
+      "reason": "motion:0.218",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3951,
+      "timestamp_sec": 67.5217,
+      "reason": "motion:0.139",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3960,
+      "timestamp_sec": 67.6755,
+      "reason": "motion:0.316",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3966,
+      "timestamp_sec": 67.7781,
+      "reason": "motion:0.103",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3969,
+      "timestamp_sec": 67.8294,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3972,
+      "timestamp_sec": 67.8806,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3978,
+      "timestamp_sec": 67.9832,
+      "reason": "motion:0.116",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3981,
+      "timestamp_sec": 68.0344,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 3990,
+      "timestamp_sec": 68.1882,
+      "reason": "motion:0.085",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4020,
+      "timestamp_sec": 68.7009,
+      "reason": "motion:0.054",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4029,
+      "timestamp_sec": 68.8547,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4038,
+      "timestamp_sec": 69.0086,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4047,
+      "timestamp_sec": 69.1624,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4059,
+      "timestamp_sec": 69.3674,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4071,
+      "timestamp_sec": 69.5725,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4083,
+      "timestamp_sec": 69.7776,
+      "reason": "motion:0.171",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4095,
+      "timestamp_sec": 69.9827,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4107,
+      "timestamp_sec": 70.1877,
+      "reason": "motion:0.180",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4113,
+      "timestamp_sec": 70.2903,
+      "reason": "motion:0.140",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4119,
+      "timestamp_sec": 70.3928,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4122,
+      "timestamp_sec": 70.4441,
+      "reason": "motion:0.170",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4128,
+      "timestamp_sec": 70.5466,
+      "reason": "motion:0.113",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4131,
+      "timestamp_sec": 70.5979,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4134,
+      "timestamp_sec": 70.6492,
+      "reason": "motion:0.317",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4143,
+      "timestamp_sec": 70.803,
+      "reason": "motion:0.369",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4155,
+      "timestamp_sec": 71.0081,
+      "reason": "motion:0.317",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4164,
+      "timestamp_sec": 71.1619,
+      "reason": "motion:0.138",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4173,
+      "timestamp_sec": 71.3157,
+      "reason": "motion:0.309",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4179,
+      "timestamp_sec": 71.4182,
+      "reason": "motion:0.297",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4182,
+      "timestamp_sec": 71.4695,
+      "reason": "motion:0.167",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4185,
+      "timestamp_sec": 71.5207,
+      "reason": "motion:0.146",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4188,
+      "timestamp_sec": 71.572,
+      "reason": "motion:0.143",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4191,
+      "timestamp_sec": 71.6233,
+      "reason": "motion:0.148",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4197,
+      "timestamp_sec": 71.7258,
+      "reason": "motion:0.370",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4203,
+      "timestamp_sec": 71.8284,
+      "reason": "motion:0.306",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4209,
+      "timestamp_sec": 71.9309,
+      "reason": "motion:0.138",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4221,
+      "timestamp_sec": 72.136,
+      "reason": "motion:0.149",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4224,
+      "timestamp_sec": 72.1873,
+      "reason": "motion:0.163",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4227,
+      "timestamp_sec": 72.2385,
+      "reason": "motion:0.126",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4230,
+      "timestamp_sec": 72.2898,
+      "reason": "motion:0.140",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4248,
+      "timestamp_sec": 72.5974,
+      "reason": "motion:0.137",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4257,
+      "timestamp_sec": 72.7512,
+      "reason": "motion:0.160",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4260,
+      "timestamp_sec": 72.8025,
+      "reason": "motion:0.157",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4263,
+      "timestamp_sec": 72.8538,
+      "reason": "motion:0.170",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4266,
+      "timestamp_sec": 72.905,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4269,
+      "timestamp_sec": 72.9563,
+      "reason": "motion:0.153",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4272,
+      "timestamp_sec": 73.0076,
+      "reason": "motion:0.141",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4275,
+      "timestamp_sec": 73.0588,
+      "reason": "motion:0.142",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4278,
+      "timestamp_sec": 73.1101,
+      "reason": "motion:0.143",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4284,
+      "timestamp_sec": 73.2126,
+      "reason": "motion:0.105",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4287,
+      "timestamp_sec": 73.2639,
+      "reason": "motion:0.251",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4296,
+      "timestamp_sec": 73.4177,
+      "reason": "motion:0.276",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4302,
+      "timestamp_sec": 73.5203,
+      "reason": "motion:0.137",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4311,
+      "timestamp_sec": 73.6741,
+      "reason": "motion:0.344",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4317,
+      "timestamp_sec": 73.7766,
+      "reason": "motion:0.190",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4320,
+      "timestamp_sec": 73.8279,
+      "reason": "motion:0.367",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4323,
+      "timestamp_sec": 73.8791,
+      "reason": "motion:0.166",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4326,
+      "timestamp_sec": 73.9304,
+      "reason": "motion:0.174",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4329,
+      "timestamp_sec": 73.9817,
+      "reason": "motion:0.130",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4338,
+      "timestamp_sec": 74.1355,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4344,
+      "timestamp_sec": 74.238,
+      "reason": "motion:0.215",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4419,
+      "timestamp_sec": 75.5198,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4428,
+      "timestamp_sec": 75.6736,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4443,
+      "timestamp_sec": 75.9299,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4449,
+      "timestamp_sec": 76.0325,
+      "reason": "motion:0.282",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4452,
+      "timestamp_sec": 76.0837,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4455,
+      "timestamp_sec": 76.135,
+      "reason": "motion:0.149",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4467,
+      "timestamp_sec": 76.3401,
+      "reason": "motion:0.082",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4476,
+      "timestamp_sec": 76.4939,
+      "reason": "motion:0.178",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4479,
+      "timestamp_sec": 76.5451,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4488,
+      "timestamp_sec": 76.699,
+      "reason": "motion:0.071",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4500,
+      "timestamp_sec": 76.904,
+      "reason": "motion:0.054",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4518,
+      "timestamp_sec": 77.2116,
+      "reason": "motion:0.061",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4524,
+      "timestamp_sec": 77.3142,
+      "reason": "motion:0.196",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4527,
+      "timestamp_sec": 77.3655,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4539,
+      "timestamp_sec": 77.5705,
+      "reason": "motion:0.311",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4548,
+      "timestamp_sec": 77.7243,
+      "reason": "motion:0.149",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4557,
+      "timestamp_sec": 77.8781,
+      "reason": "motion:0.387",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4563,
+      "timestamp_sec": 77.9807,
+      "reason": "motion:0.337",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4596,
+      "timestamp_sec": 78.5447,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4608,
+      "timestamp_sec": 78.7497,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4629,
+      "timestamp_sec": 79.1086,
+      "reason": "motion:0.318",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4635,
+      "timestamp_sec": 79.2112,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4638,
+      "timestamp_sec": 79.2624,
+      "reason": "motion:0.194",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4647,
+      "timestamp_sec": 79.4162,
+      "reason": "motion:0.178",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4653,
+      "timestamp_sec": 79.5188,
+      "reason": "motion:0.113",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4659,
+      "timestamp_sec": 79.6213,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4680,
+      "timestamp_sec": 79.9802,
+      "reason": "motion:0.096",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4692,
+      "timestamp_sec": 80.1853,
+      "reason": "motion:0.204",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4695,
+      "timestamp_sec": 80.2365,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4701,
+      "timestamp_sec": 80.3391,
+      "reason": "motion:0.175",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4707,
+      "timestamp_sec": 80.4416,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4713,
+      "timestamp_sec": 80.5442,
+      "reason": "motion:0.138",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4719,
+      "timestamp_sec": 80.6467,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4722,
+      "timestamp_sec": 80.698,
+      "reason": "motion:0.108",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4725,
+      "timestamp_sec": 80.7492,
+      "reason": "motion:0.130",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4728,
+      "timestamp_sec": 80.8005,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4731,
+      "timestamp_sec": 80.8518,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4734,
+      "timestamp_sec": 80.903,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4737,
+      "timestamp_sec": 80.9543,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4743,
+      "timestamp_sec": 81.0568,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4746,
+      "timestamp_sec": 81.1081,
+      "reason": "motion:0.189",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4749,
+      "timestamp_sec": 81.1594,
+      "reason": "motion:0.183",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4755,
+      "timestamp_sec": 81.2619,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4758,
+      "timestamp_sec": 81.3132,
+      "reason": "motion:0.221",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4761,
+      "timestamp_sec": 81.3645,
+      "reason": "motion:0.591",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4767,
+      "timestamp_sec": 81.467,
+      "reason": "motion:0.491",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4776,
+      "timestamp_sec": 81.6208,
+      "reason": "motion:0.247",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4779,
+      "timestamp_sec": 81.6721,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4794,
+      "timestamp_sec": 81.9284,
+      "reason": "motion:0.186",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4812,
+      "timestamp_sec": 82.236,
+      "reason": "motion:0.183",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4815,
+      "timestamp_sec": 82.2873,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4818,
+      "timestamp_sec": 82.3386,
+      "reason": "motion:0.066",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4827,
+      "timestamp_sec": 82.4924,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4845,
+      "timestamp_sec": 82.8,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4851,
+      "timestamp_sec": 82.9025,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4860,
+      "timestamp_sec": 83.0564,
+      "reason": "motion:0.125",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4863,
+      "timestamp_sec": 83.1076,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4872,
+      "timestamp_sec": 83.2614,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4881,
+      "timestamp_sec": 83.4152,
+      "reason": "motion:0.087",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4890,
+      "timestamp_sec": 83.569,
+      "reason": "motion:0.108",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4893,
+      "timestamp_sec": 83.6203,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4896,
+      "timestamp_sec": 83.6716,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4899,
+      "timestamp_sec": 83.7229,
+      "reason": "motion:0.083",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4902,
+      "timestamp_sec": 83.7741,
+      "reason": "motion:0.065",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4905,
+      "timestamp_sec": 83.8254,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4923,
+      "timestamp_sec": 84.133,
+      "reason": "motion:0.097",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4929,
+      "timestamp_sec": 84.2355,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4956,
+      "timestamp_sec": 84.697,
+      "reason": "motion:0.142",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4962,
+      "timestamp_sec": 84.7995,
+      "reason": "motion:0.165",
+      "face_detected": false
+    },
+    {
+      "frame_index": 4971,
+      "timestamp_sec": 84.9533,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4983,
+      "timestamp_sec": 85.1584,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 4995,
+      "timestamp_sec": 85.3635,
+      "reason": "motion:0.057",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5004,
+      "timestamp_sec": 85.5173,
+      "reason": "motion:0.061",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5007,
+      "timestamp_sec": 85.5686,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 5028,
+      "timestamp_sec": 85.9274,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5034,
+      "timestamp_sec": 86.03,
+      "reason": "motion:0.184",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5037,
+      "timestamp_sec": 86.0812,
+      "reason": "motion:0.118",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5052,
+      "timestamp_sec": 86.3376,
+      "reason": "motion:0.212",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5058,
+      "timestamp_sec": 86.4401,
+      "reason": "motion:0.102",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5088,
+      "timestamp_sec": 86.9528,
+      "reason": "motion:0.175",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5103,
+      "timestamp_sec": 87.2092,
+      "reason": "motion:0.088",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5109,
+      "timestamp_sec": 87.3117,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5118,
+      "timestamp_sec": 87.4655,
+      "reason": "motion:0.255",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5136,
+      "timestamp_sec": 87.7731,
+      "reason": "motion:0.171",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5160,
+      "timestamp_sec": 88.1833,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5166,
+      "timestamp_sec": 88.2858,
+      "reason": "motion:0.073",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5190,
+      "timestamp_sec": 88.696,
+      "reason": "motion:0.071",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5241,
+      "timestamp_sec": 89.5676,
+      "reason": "motion:0.084",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5253,
+      "timestamp_sec": 89.7726,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5262,
+      "timestamp_sec": 89.9264,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5289,
+      "timestamp_sec": 90.3879,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5301,
+      "timestamp_sec": 90.5929,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5319,
+      "timestamp_sec": 90.9006,
+      "reason": "motion:0.086",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5331,
+      "timestamp_sec": 91.1056,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5355,
+      "timestamp_sec": 91.5158,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5364,
+      "timestamp_sec": 91.6696,
+      "reason": "motion:0.087",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5370,
+      "timestamp_sec": 91.7721,
+      "reason": "motion:0.089",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5376,
+      "timestamp_sec": 91.8747,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5385,
+      "timestamp_sec": 92.0285,
+      "reason": "motion:0.159",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5388,
+      "timestamp_sec": 92.0798,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5391,
+      "timestamp_sec": 92.131,
+      "reason": "motion:0.160",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5400,
+      "timestamp_sec": 92.2848,
+      "reason": "motion:0.137",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5403,
+      "timestamp_sec": 92.3361,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5412,
+      "timestamp_sec": 92.4899,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5424,
+      "timestamp_sec": 92.695,
+      "reason": "motion:0.111",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5430,
+      "timestamp_sec": 92.7975,
+      "reason": "motion:0.078",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5436,
+      "timestamp_sec": 92.9001,
+      "reason": "motion:0.071",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5442,
+      "timestamp_sec": 93.0026,
+      "reason": "motion:0.071",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5466,
+      "timestamp_sec": 93.4128,
+      "reason": "motion:0.178",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5505,
+      "timestamp_sec": 94.0793,
+      "reason": "motion:0.111",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5529,
+      "timestamp_sec": 94.4894,
+      "reason": "motion:0.070",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5562,
+      "timestamp_sec": 95.0534,
+      "reason": "motion:0.073",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5586,
+      "timestamp_sec": 95.4635,
+      "reason": "motion:0.089",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5589,
+      "timestamp_sec": 95.5148,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5592,
+      "timestamp_sec": 95.5661,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5595,
+      "timestamp_sec": 95.6173,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5598,
+      "timestamp_sec": 95.6686,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5613,
+      "timestamp_sec": 95.925,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5628,
+      "timestamp_sec": 96.1813,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5643,
+      "timestamp_sec": 96.4377,
+      "reason": "motion:0.105",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5658,
+      "timestamp_sec": 96.694,
+      "reason": "motion:0.093",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5661,
+      "timestamp_sec": 96.7453,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5673,
+      "timestamp_sec": 96.9503,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5679,
+      "timestamp_sec": 97.0529,
+      "reason": "motion:0.102",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5694,
+      "timestamp_sec": 97.3092,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5703,
+      "timestamp_sec": 97.463,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5709,
+      "timestamp_sec": 97.5656,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5718,
+      "timestamp_sec": 97.7194,
+      "reason": "motion:0.092",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5727,
+      "timestamp_sec": 97.8732,
+      "reason": "motion:0.129",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5766,
+      "timestamp_sec": 98.5397,
+      "reason": "motion:0.052",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5775,
+      "timestamp_sec": 98.6935,
+      "reason": "motion:0.056",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5796,
+      "timestamp_sec": 99.0524,
+      "reason": "motion:0.067",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5802,
+      "timestamp_sec": 99.1549,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5820,
+      "timestamp_sec": 99.4625,
+      "reason": "motion:0.082",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5823,
+      "timestamp_sec": 99.5138,
+      "reason": "motion:0.076",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5838,
+      "timestamp_sec": 99.7702,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5859,
+      "timestamp_sec": 100.129,
+      "reason": "motion:0.050",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5880,
+      "timestamp_sec": 100.4879,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5889,
+      "timestamp_sec": 100.6417,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5901,
+      "timestamp_sec": 100.8468,
+      "reason": "motion:0.066",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5919,
+      "timestamp_sec": 101.1544,
+      "reason": "motion:0.058",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5934,
+      "timestamp_sec": 101.4108,
+      "reason": "motion:0.085",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5943,
+      "timestamp_sec": 101.5646,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5949,
+      "timestamp_sec": 101.6671,
+      "reason": "motion:0.067",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5958,
+      "timestamp_sec": 101.8209,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 5994,
+      "timestamp_sec": 102.4362,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6027,
+      "timestamp_sec": 103.0001,
+      "reason": "motion:0.066",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6060,
+      "timestamp_sec": 103.5641,
+      "reason": "motion:0.064",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6093,
+      "timestamp_sec": 104.1281,
+      "reason": "motion:0.081",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6114,
+      "timestamp_sec": 104.4869,
+      "reason": "motion:0.077",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6126,
+      "timestamp_sec": 104.692,
+      "reason": "motion:0.069",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6144,
+      "timestamp_sec": 104.9996,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6147,
+      "timestamp_sec": 105.0509,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6153,
+      "timestamp_sec": 105.1534,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6162,
+      "timestamp_sec": 105.3073,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6177,
+      "timestamp_sec": 105.5636,
+      "reason": "motion:0.147",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6183,
+      "timestamp_sec": 105.6661,
+      "reason": "motion:0.166",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6201,
+      "timestamp_sec": 105.9738,
+      "reason": "motion:0.127",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6213,
+      "timestamp_sec": 106.1788,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6228,
+      "timestamp_sec": 106.4352,
+      "reason": "motion:0.066",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6252,
+      "timestamp_sec": 106.8453,
+      "reason": "motion:0.062",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6267,
+      "timestamp_sec": 107.1017,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 6270,
+      "timestamp_sec": 107.153,
+      "reason": "motion:0.073",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6279,
+      "timestamp_sec": 107.3068,
+      "reason": "motion:0.118",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6282,
+      "timestamp_sec": 107.358,
+      "reason": "motion:0.115",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6291,
+      "timestamp_sec": 107.5118,
+      "reason": "motion:0.126",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6297,
+      "timestamp_sec": 107.6144,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6303,
+      "timestamp_sec": 107.7169,
+      "reason": "motion:0.114",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6306,
+      "timestamp_sec": 107.7682,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6309,
+      "timestamp_sec": 107.8195,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6315,
+      "timestamp_sec": 107.922,
+      "reason": "motion:0.134",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6321,
+      "timestamp_sec": 108.0245,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6324,
+      "timestamp_sec": 108.0758,
+      "reason": "motion:0.127",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6327,
+      "timestamp_sec": 108.1271,
+      "reason": "motion:0.431",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6333,
+      "timestamp_sec": 108.2296,
+      "reason": "motion:0.361",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6336,
+      "timestamp_sec": 108.2809,
+      "reason": "motion:0.130",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6339,
+      "timestamp_sec": 108.3321,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 6342,
+      "timestamp_sec": 108.3834,
+      "reason": "motion:0.242",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6345,
+      "timestamp_sec": 108.4347,
+      "reason": "motion:0.246",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6351,
+      "timestamp_sec": 108.5372,
+      "reason": "motion:0.129",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6357,
+      "timestamp_sec": 108.6398,
+      "reason": "motion:0.413",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6366,
+      "timestamp_sec": 108.7936,
+      "reason": "motion:0.262",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6387,
+      "timestamp_sec": 109.1525,
+      "reason": "motion:0.933",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6390,
+      "timestamp_sec": 109.2037,
+      "reason": "motion:0.437",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6396,
+      "timestamp_sec": 109.3063,
+      "reason": "motion:1.286",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6402,
+      "timestamp_sec": 109.4088,
+      "reason": "motion:0.600",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6405,
+      "timestamp_sec": 109.4601,
+      "reason": "motion:0.467",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6411,
+      "timestamp_sec": 109.5626,
+      "reason": "motion:0.217",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6420,
+      "timestamp_sec": 109.7164,
+      "reason": "motion:0.147",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6423,
+      "timestamp_sec": 109.7677,
+      "reason": "motion:0.083",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6426,
+      "timestamp_sec": 109.819,
+      "reason": "motion:0.163",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6432,
+      "timestamp_sec": 109.9215,
+      "reason": "motion:0.097",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6438,
+      "timestamp_sec": 110.024,
+      "reason": "motion:0.097",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6441,
+      "timestamp_sec": 110.0753,
+      "reason": "motion:0.096",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6453,
+      "timestamp_sec": 110.2804,
+      "reason": "motion:0.104",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6462,
+      "timestamp_sec": 110.4342,
+      "reason": "motion:0.231",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6477,
+      "timestamp_sec": 110.6905,
+      "reason": "motion:0.112",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6492,
+      "timestamp_sec": 110.9469,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6495,
+      "timestamp_sec": 110.9982,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 6507,
+      "timestamp_sec": 111.2032,
+      "reason": "face_detected",
+      "face_detected": true
+    },
+    {
+      "frame_index": 6534,
+      "timestamp_sec": 111.6647,
+      "reason": "motion:0.098",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6540,
+      "timestamp_sec": 111.7672,
+      "reason": "motion:0.192",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6552,
+      "timestamp_sec": 111.9723,
+      "reason": "motion:0.161",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6561,
+      "timestamp_sec": 112.1261,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6573,
+      "timestamp_sec": 112.3312,
+      "reason": "motion:0.060",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6576,
+      "timestamp_sec": 112.3824,
+      "reason": "motion:0.093",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6585,
+      "timestamp_sec": 112.5362,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6597,
+      "timestamp_sec": 112.7413,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6600,
+      "timestamp_sec": 112.7926,
+      "reason": "motion:0.117",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6606,
+      "timestamp_sec": 112.8951,
+      "reason": "motion:0.115",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6612,
+      "timestamp_sec": 112.9977,
+      "reason": "motion:0.095",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6615,
+      "timestamp_sec": 113.0489,
+      "reason": "motion:0.127",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6624,
+      "timestamp_sec": 113.2027,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6630,
+      "timestamp_sec": 113.3053,
+      "reason": "motion:0.107",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6633,
+      "timestamp_sec": 113.3565,
+      "reason": "motion:0.112",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6636,
+      "timestamp_sec": 113.4078,
+      "reason": "motion:0.110",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6639,
+      "timestamp_sec": 113.4591,
+      "reason": "motion:0.144",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6642,
+      "timestamp_sec": 113.5104,
+      "reason": "motion:0.130",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6645,
+      "timestamp_sec": 113.5616,
+      "reason": "motion:0.145",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6648,
+      "timestamp_sec": 113.6129,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6651,
+      "timestamp_sec": 113.6642,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6654,
+      "timestamp_sec": 113.7154,
+      "reason": "motion:0.095",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6660,
+      "timestamp_sec": 113.818,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6669,
+      "timestamp_sec": 113.9718,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6711,
+      "timestamp_sec": 114.6895,
+      "reason": "motion:0.051",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6720,
+      "timestamp_sec": 114.8434,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6723,
+      "timestamp_sec": 114.8946,
+      "reason": "motion:0.075",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6729,
+      "timestamp_sec": 114.9972,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6735,
+      "timestamp_sec": 115.0997,
+      "reason": "motion:0.128",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6738,
+      "timestamp_sec": 115.151,
+      "reason": "motion:0.124",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6741,
+      "timestamp_sec": 115.2022,
+      "reason": "motion:0.116",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6750,
+      "timestamp_sec": 115.356,
+      "reason": "motion:0.107",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6756,
+      "timestamp_sec": 115.4586,
+      "reason": "motion:0.135",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6768,
+      "timestamp_sec": 115.6637,
+      "reason": "motion:0.085",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6780,
+      "timestamp_sec": 115.8687,
+      "reason": "motion:0.090",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6795,
+      "timestamp_sec": 116.1251,
+      "reason": "motion:0.154",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6807,
+      "timestamp_sec": 116.3302,
+      "reason": "motion:0.152",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6813,
+      "timestamp_sec": 116.4327,
+      "reason": "motion:0.131",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6816,
+      "timestamp_sec": 116.484,
+      "reason": "motion:0.134",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6819,
+      "timestamp_sec": 116.5352,
+      "reason": "motion:0.216",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6837,
+      "timestamp_sec": 116.8429,
+      "reason": "motion:0.150",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6843,
+      "timestamp_sec": 116.9454,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6846,
+      "timestamp_sec": 116.9967,
+      "reason": "motion:0.106",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6864,
+      "timestamp_sec": 117.3043,
+      "reason": "motion:0.243",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6870,
+      "timestamp_sec": 117.4068,
+      "reason": "motion:0.080",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6876,
+      "timestamp_sec": 117.5094,
+      "reason": "motion:0.094",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6882,
+      "timestamp_sec": 117.6119,
+      "reason": "motion:0.120",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6888,
+      "timestamp_sec": 117.7144,
+      "reason": "motion:0.150",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6894,
+      "timestamp_sec": 117.817,
+      "reason": "motion:0.140",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6909,
+      "timestamp_sec": 118.0733,
+      "reason": "motion:0.199",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6918,
+      "timestamp_sec": 118.2271,
+      "reason": "motion:0.126",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6924,
+      "timestamp_sec": 118.3297,
+      "reason": "motion:0.100",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6933,
+      "timestamp_sec": 118.4835,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6939,
+      "timestamp_sec": 118.586,
+      "reason": "motion:0.111",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6948,
+      "timestamp_sec": 118.7398,
+      "reason": "motion:0.099",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6951,
+      "timestamp_sec": 118.7911,
+      "reason": "motion:0.101",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6963,
+      "timestamp_sec": 118.9962,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 6978,
+      "timestamp_sec": 119.2525,
+      "reason": "motion:0.067",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7005,
+      "timestamp_sec": 119.7139,
+      "reason": "motion:0.303",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7014,
+      "timestamp_sec": 119.8678,
+      "reason": "motion:0.491",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7020,
+      "timestamp_sec": 119.9703,
+      "reason": "motion:0.186",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7026,
+      "timestamp_sec": 120.0728,
+      "reason": "motion:0.379",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7029,
+      "timestamp_sec": 120.1241,
+      "reason": "motion:0.121",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7035,
+      "timestamp_sec": 120.2266,
+      "reason": "motion:0.329",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7044,
+      "timestamp_sec": 120.3804,
+      "reason": "motion:0.764",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7056,
+      "timestamp_sec": 120.5855,
+      "reason": "motion:0.481",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7059,
+      "timestamp_sec": 120.6368,
+      "reason": "motion:0.237",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7074,
+      "timestamp_sec": 120.8931,
+      "reason": "motion:0.229",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7080,
+      "timestamp_sec": 120.9957,
+      "reason": "motion:0.197",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7083,
+      "timestamp_sec": 121.0469,
+      "reason": "motion:0.360",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7089,
+      "timestamp_sec": 121.1495,
+      "reason": "motion:0.204",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7122,
+      "timestamp_sec": 121.7134,
+      "reason": "motion:0.053",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7134,
+      "timestamp_sec": 121.9185,
+      "reason": "motion:0.063",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7140,
+      "timestamp_sec": 122.0211,
+      "reason": "motion:0.055",
+      "face_detected": false
+    },
+    {
+      "frame_index": 7146,
+      "timestamp_sec": 122.1236,
+      "reason": "motion:0.068",
+      "face_detected": false
+    }
+  ]
+}
