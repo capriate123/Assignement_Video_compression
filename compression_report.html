@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>SentioMind Compression Report</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d1a;color:#ccd6f6;font-family:'Segoe UI',Arial,sans-serif;padding-bottom:60px}
+header{background:linear-gradient(135deg,#0d1a2e,#1a2e4e);padding:32px 44px 24px;border-bottom:2px solid #2e75b6}
+header h1{font-size:1.8rem;color:#4fc3f7}
+header p{color:#8888aa;margin-top:5px;font-size:.87rem}
+.c{max-width:940px;margin:0 auto;padding:0 22px}
+h2{font-size:1.05rem;color:#4fc3f7;border-left:3px solid #4fc3f7;padding-left:11px;margin:32px 0 13px;text-transform:uppercase}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:11px;margin-top:13px}
+.stat{background:#131325;border:1px solid #2a2a5a;border-radius:8px;padding:15px 11px;text-align:center}
+.v{font-size:1.65rem;font-weight:700;color:#69f0ae}
+.n{font-size:.71rem;color:#8888aa;margin-top:3px;text-transform:uppercase}
+.w .v{color:#ffd740} .b .v{color:#4fc3f7}
+.bw{background:#1a1a3e;border-radius:5px;overflow:hidden;height:23px;margin:5px 0}
+.bar{height:100%;display:flex;align-items:center;padding-left:8px;font-size:.76rem;font-weight:600;color:#0d0d1a}
+table{width:100%;border-collapse:collapse;font-size:.81rem;margin-top:8px}
+th{background:#1a1a3e;color:#4fc3f7;padding:8px 11px;text-align:left;border-bottom:1px solid #2a2a5a}
+td{padding:6px 11px;border-bottom:1px solid #1a1a30}
+tr:hover td{background:#1a1a2e}
+.sb{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.card{background:#131325;border:1px solid #2a2a5a;border-radius:6px;width:126px;padding:7px;text-align:center}
+.thumb{height:70px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.ts{font-size:.93rem;font-weight:700;color:#fff;font-family:monospace}
+.badge{font-size:.59rem;padding:1px 5px;border-radius:8px;font-weight:600;background:#69f0ae22;color:#69f0ae;border:1px solid #69f0ae}
+.lbl2{font-size:.61rem;color:#8888aa;margin-top:4px;word-break:break-all}
+.step{background:#131325;border:1px solid #2a2a5a;border-radius:6px;padding:10px 14px;margin-bottom:7px}
+.sn{color:#ffd740;font-weight:700;font-size:.85rem}
+.step p{color:#a8b2d8;font-size:.82rem;margin-top:2px;line-height:1.6}
+footer{text-align:center;color:#555577;font-size:.71rem;margin-top:42px;font-family:monospace}
+</style></head><body>
+<header><div class="c">
+<h1>&#9650; Smart Behavioral Video Compression</h1>
+<p>SentioMind &nbsp;|&nbsp; Class_8_cctv_video_1.mov &nbsp;|&nbsp;
+122.5s @ 58.5fps &nbsp;|&nbsp;
+stride=3</p>
+</div></header>
+<div class="c">
+<h2>Summary</h2>
+<div class="stats">
+<div class="stat"><div class="v">92.2%</div><div class="n">Size Reduction</div></div>
+<div class="stat"><div class="v">91.3%</div><div class="n">Frames Dropped</div></div>
+<div class="stat b"><div class="v">623</div><div class="n">Frames Kept</div></div>
+<div class="stat w"><div class="v">7169</div><div class="n">Total Frames</div></div>
+<div class="stat b"><div class="v">40</div><div class="n">Face Frames</div></div>
+<div class="stat" style="border-color:#ef535044"><div class="v" style="color:#ef5350">1.19x</div><div class="n">Proc Speed</div></div>
+<div class="stat w"><div class="v">614.2MB</div><div class="n">Original</div></div>
+<div class="stat"><div class="v">47.8MB</div><div class="n">Compressed</div></div>
+</div>
+<h2>File Size</h2>
+<div style="color:#8888aa;font-size:.77rem;margin-bottom:3px">Original — 614.2 MB</div>
+<div class="bw"><div class="bar" style="width:100%;background:linear-gradient(90deg,#ef5350,#ff7043)">100%</div></div>
+<div style="color:#8888aa;font-size:.77rem;margin-bottom:3px">Compressed — 47.8 MB</div>
+<div class="bw"><div class="bar" style="width:7.8%;background:linear-gradient(90deg,#4fc3f7,#69f0ae)">7.8%</div></div>
+<h2>Algorithm</h2>
+<div class="step"><div class="sn">Step 1 — pHash Deduplication (64-bit DCT)</div>
+<p>Frames &gt;95% perceptually similar to last kept frame dropped as duplicates.
+<strong style="color:#ffd740">1607 frames dropped.</strong>
+Runs on 32×32 DCT of 320×180 thumbnail — no imagehash library.</p></div>
+<div class="step"><div class="sn">Step 2 — Sparse LK Optical Flow (320×180 grid)</div>
+<p>17×12 tracking grid on 320×180 thumbnail. Motion score &lt; 0.05 = static scene = dropped.
+<strong style="color:#ffd740">160 frames dropped.</strong></p></div>
+<div class="step"><div class="sn">Step 3 — Haar Face Detection (run every 4th analysis frame)</div>
+<p>haarcascade_frontalface_default.xml on 320×180. Face = unconditional keep, overrides Steps 1&amp;2.
+<strong style="color:#69f0ae">40 frames preserved.</strong></p></div>
+<div class="step"><div class="sn">Step 4 — Context Continuity (every 3 seconds)</div>
+<p>One frame force-kept every 3s minimum to preserve temporal structure for downstream pipeline.</p></div>
+<div class="step"><div class="sn">Step 5 — H.264 Re-encode via ffmpeg (CRF 23, 12fps, concat demuxer)</div>
+<p>libx264 fast preset. Input 58.5fps → output 12fps.
+Concat demuxer avoids sequential-numbering gap bug.</p></div>
+<div class="step"><div class="sn">Speed Optimisation — Frame Stride</div>
+<p>Only every 3th frame is analysed
+(target analysis rate ≤20fps). Frames between analysis points that are not
+face/motion candidates are skipped. Context gate fires independently of stride.</p></div>
+<h2>Storyboard</h2>
+<div class="sb"><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#4fc3f722,#4fc3f744);border:2px solid #4fc3f7;"><span class="ts">0.0s</span></div><div class="lbl2">first_frame</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#69f0ae22,#69f0ae44);border:2px solid #69f0ae;"><span class="ts">15.5s</span></div><div class="lbl2">motion:0.145</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ffd74022,#ffd74044);border:2px solid #ffd740;"><span class="ts">21.5s</span></div><div class="lbl2">motion:0.102</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ff6d6d22,#ff6d6d44);border:2px solid #ff6d6d;"><span class="ts">36.5s</span></div><div class="lbl2">motion:0.152</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ab47bc22,#ab47bc44);border:2px solid #ab47bc;"><span class="ts">45.7s</span></div><div class="lbl2">motion:0.187</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#26c6da22,#26c6da44);border:2px solid #26c6da;"><span class="ts">56.4s</span></div><div class="lbl2">motion:0.137</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#d4e15722,#d4e15744);border:2px solid #d4e157;"><span class="ts">70.4s</span></div><div class="lbl2">motion:0.075</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ff704322,#ff704344);border:2px solid #ff7043;"><span class="ts">76.7s</span></div><div class="lbl2">motion:0.071</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#78909c22,#78909c44);border:2px solid #78909c;"><span class="ts">83.6s</span></div><div class="lbl2">motion:0.101</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#42a5f522,#42a5f544);border:2px solid #42a5f5;"><span class="ts">95.1s</span></div><div class="lbl2">motion:0.073</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#66bb6a22,#66bb6a44);border:2px solid #66bb6a;"><span class="ts">107.2s</span></div><div class="lbl2">motion:0.073</div></div><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ef535022,#ef535044);border:2px solid #ef5350;"><span class="ts">113.3s</span></div><div class="lbl2">motion:0.107</div></div></div>
+<h2>Segments (5)</h2>
+<table><tr><th>Start Frame</th><th>End Frame</th><th>Start</th><th>End</th><th>Duration</th></tr>
+<tr><td>0</td><td>24</td><td>0.00s</td><td>0.41s</td><td>0.41s</td></tr><tr><td>192</td><td>1506</td><td>3.28s</td><td>25.74s</td><td>22.46s</td></tr><tr><td>1632</td><td>2418</td><td>27.89s</td><td>41.32s</td><td>13.43s</td></tr><tr><td>2514</td><td>3402</td><td>42.96s</td><td>58.14s</td><td>15.18s</td></tr><tr><td>3579</td><td>7146</td><td>61.16s</td><td>122.12s</td><td>60.96s</td></tr></table>
+<h2>Drop Breakdown</h2>
+<table><tr><th>Reason</th><th>Frames</th><th>% of Total</th></tr>
+<tr><td>pHash duplicate (&gt;95% similar)</td><td>1607</td>
+<td>22.4%</td></tr>
+<tr><td>Low optical flow (&lt; 0.05)</td><td>160</td>
+<td>2.2%</td></tr>
+<tr><td>Kept (face / motion / context)</td><td>623</td>
+<td>8.7%</td></tr>
+</table>
+</div>
+<footer>SentioMind Smart Behavioral Compression &nbsp;|&nbsp;
+1.19x real-time &nbsp;|&nbsp; stride=3
+</footer>
+</body></html>
