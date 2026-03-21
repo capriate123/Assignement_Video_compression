@@ -1,511 +1,436 @@
 """
-Smart Behavioral Video Compression - SentioMind
-Optimised for >= 4x real-time on high-resolution (2992x1564) CCTV footage.
+video_compression.py
+Sentio Mind · Project 2 · Smart Behavioral Video Compression
 
-Speed strategy:
-  - Analyse every Nth frame (N = max(1, fps/20)) so analysis rate <= 20fps
-    regardless of camera fps.  For 58.5fps camera N=3 -> 19.5 fps analysis.
-  - All processing on 320x180 INTER_NEAREST thumbnail (0.15ms vs 27ms AREA)
-  - pHash every analysis frame, Haar every 4th analysis frame (slow step)
-  - Frames skipped by the strider are only dropped if their neighbours pass
-    pHash+motion gates; face-detected frames always kept regardless of stride
-  - ffmpeg concat demuxer avoids sequential-numbering gap bug
+Copy this file to solution.py and fill in every TODO block.
+Do not rename any function.
+Run: python solution.py
+Requires ffmpeg installed on your system: sudo apt install ffmpeg
 """
 
 import cv2
-import numpy as np
 import json
-import os
-import time
+import base64
 import subprocess
-import tempfile
-import shutil
+import time
+import numpy as np
+from pathlib import Path
 
-# ── thumbnail size used for ALL analysis ──────────────────────────────────────
-_AW, _AH = 320, 180
+# ---------------------------------------------------------------------------
+# CONFIG
+# ---------------------------------------------------------------------------
+VIDEO_IN               = Path("video_sample_1.mov")
+VIDEO_OUT              = Path("compressed_output.mp4")
+REPORT_HTML_OUT        = Path("compression_report.html")
+SEGMENTS_JSON_OUT      = Path("segments_kept.json")
 
-# ── sparse LK grid on 320x180 ────────────────────────────────────────────────
-_GRID = np.array(
-    [[x, y] for y in range(5, _AH, 15) for x in range(5, _AW, 15)],
-    dtype=np.float32
-).reshape(-1, 1, 2)
+PHASH_THRESHOLD        = 0.95   # similarity above this = near-duplicate, discard
+MOTION_KEEP_THRESH     = 0.15   # keep frame if motion exceeds this (no face needed)
+MOTION_DISCARD_THRESH  = 0.05   # definitely discard below this
+CONTEXT_EVERY_SEC      = 3      # force-keep one frame every this many seconds
+OUTPUT_FPS             = 12     # frame rate of the output video
+OUTPUT_CRF             = 28     # ffmpeg quality: lower = better quality + larger file
+# ---------------------------------------------------------------------------
+# PERCEPTUAL HASH
+# ---------------------------------------------------------------------------
 
+def compute_phash(frame: np.ndarray) -> str:
+    """
+    Compute a perceptual hash of the frame.
+    Steps: resize to 32×32 grayscale → DCT → threshold at mean → flatten to bit string.
+    Return a string of '0' and '1' characters, length 64.
 
-# ── pHash ─────────────────────────────────────────────────────────────────────
+    You can use the imagehash library (imagehash.phash) or implement manually.
+    TODO: implement
+    """
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    resized = cv2.resize(gray, (32, 32))
 
-def phash(gray_320x180):
-    """64-bit DCT perceptual hash from a 320x180 greyscale thumbnail."""
-    img = cv2.resize(gray_320x180, (32, 32)).astype(np.float32)
-    dct = cv2.dct(img)
-    low = dct[:8, :8]
-    med = np.median(low)
-    bits = (low > med).flatten()
-    h = 0
-    for b in bits:
-        h = (h << 1) | int(b)
-    return h
+    dct = cv2.dct(np.float32(resized))
+    dct_low = dct[:8, :8]
 
+    mean_val = np.mean(dct_low)
+    hash_bits = (dct_low > mean_val).flatten()
 
-def _hamming(h1, h2):
-    x = h1 ^ h2
-    c = 0
-    while x:
-        c += x & 1
-        x >>= 1
-    return c
-
-
-def hash_similarity(h1, h2, total_bits=64):
-    return 1.0 - _hamming(h1, h2) / total_bits
-
-
-# ── optical flow ──────────────────────────────────────────────────────────────
-
-def optical_flow_score(prev_gray, curr_gray):
-    pts, st, _ = cv2.calcOpticalFlowPyrLK(prev_gray, curr_gray, _GRID, None)
-    good = pts[st.ravel() == 1] - _GRID[st.ravel() == 1]
-    return float(np.mean(np.linalg.norm(good, axis=1))) if len(good) else 0.0
+    return ''.join(['1' if b else '0' for b in hash_bits])
 
 
-# ── face detector ─────────────────────────────────────────────────────────────
+def phash_similarity(h1: str, h2: str) -> float:
+    """
+    Compare two hash strings. Return 1.0 if identical, 0.0 if completely different.
+    Formula: 1.0 - (hamming_distance / length)
+    TODO: implement
+    """
+    if not h1 or not h2 or len(h1) != len(h2):
+        return 0.0
 
-def load_face_detector():
-    path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
-    return cv2.CascadeClassifier(path)
+    hamming = sum(c1 != c2 for c1, c2 in zip(h1, h2))
+    return 1.0 - (hamming / len(h1))
 
 
-def has_face(gray_320x180, detector):
-    faces = detector.detectMultiScale(
-        gray_320x180, scaleFactor=1.1, minNeighbors=3,
-        minSize=(15, 15), flags=cv2.CASCADE_SCALE_IMAGE
+# ---------------------------------------------------------------------------
+# MOTION SCORE
+# ---------------------------------------------------------------------------
+
+def compute_motion_score(prev_gray, curr_gray: np.ndarray) -> float:
+    """
+    Dense optical flow between two grayscale frames. Return mean magnitude, ~0.0-1.0.
+    If prev_gray is None, return 0.0.
+    TODO: cv2.calcOpticalFlowFarneback
+    Params: pyr_scale=0.5, levels=3, winsize=15, iterations=3, poly_n=5, poly_sigma=1.2
+    """
+    if prev_gray is None:
+        return 0.0
+
+    flow = cv2.calcOpticalFlowFarneback(
+        prev_gray, curr_gray,
+        None,
+        pyr_scale=0.5,
+        levels=3,
+        winsize=15,
+        iterations=3,
+        poly_n=5,
+        poly_sigma=1.2,
+        flags=0
     )
+
+    mag, _ = cv2.cartToPolar(flow[..., 0], flow[..., 1])
+    return float(np.mean(mag))
+
+
+# ---------------------------------------------------------------------------
+# FACE PRESENCE CHECK
+# ---------------------------------------------------------------------------
+
+def has_face(frame: np.ndarray, cascade) -> bool:
+    """
+    True if at least one face detected. Use the Haar cascade passed in.
+    Equalise histogram on grayscale first for better CCTV detection.
+    TODO: cascade.detectMultiScale — scaleFactor=1.1, minNeighbors=3, minSize=(20,20)
+    """
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.equalizeHist(gray)
+
+    faces = cascade.detectMultiScale(
+        gray,
+        scaleFactor=1.1,
+        minNeighbors=3,
+        minSize=(20, 20)
+    )
+
     return len(faces) > 0
 
 
-# ── thumbnail helper ──────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# FRAME KEEP DECISION
+# ---------------------------------------------------------------------------
 
-def thumb_gray(frame):
-    """Resize BGR frame to 320x180 and convert to greyscale. ~0.3ms."""
-    return cv2.cvtColor(
-        cv2.resize(frame, (_AW, _AH), interpolation=cv2.INTER_NEAREST),
-        cv2.COLOR_BGR2GRAY
-    )
+def should_keep_frame(frame: np.ndarray,
+                      prev_frame,
+                      prev_kept_hash: str,
+                      last_kept_time_sec: float,
+                      current_time_sec: float,
+                      cascade) -> tuple:
+    """
+    Apply the 5-step decision algorithm from README in order.
+    Return: (keep: bool, reason: str, motion_score: float, face_found: bool)
 
+    Reason strings (use exactly these):
+      'face_detected', 'motion_above_threshold', 'context_frame',
+      'face_and_motion', 'discarded_duplicate', 'discarded_static'
 
-# ── main selection pipeline ───────────────────────────────────────────────────
+    TODO: implement
+    """
+    curr_hash = compute_phash(frame)
 
-def select_frames(video_path,
-                  phash_similarity_threshold=0.95,
-                  motion_threshold=0.05,
-                  context_interval_sec=3.0):
+    # Step 1: pHash duplicate removal
+    if prev_kept_hash:
+        similarity = phash_similarity(curr_hash, prev_kept_hash)
+        if similarity > PHASH_THRESHOLD:
+            return False, "discarded_duplicate", 0.0, False
 
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise RuntimeError(f"Cannot open: {video_path}")
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    prev_gray = None if prev_frame is None else cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)
 
-    fps      = cap.get(cv2.CAP_PROP_FPS) or 25.0
-    total    = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    width    = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    height   = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    duration = total / fps
+    motion_score = compute_motion_score(prev_gray, gray)
+    face_found = has_face(frame, cascade)
 
-    # ── SPEED KEY: only analyse every N-th frame ──────────────────────────
-    # Target analysis rate <= 20 fps so per-frame budget is comfortable.
-    # For a 58.5 fps camera N=3 -> ~19.5 fps analysis -> easily 4x realtime.
-    stride = max(1, int(round(fps / 20)))
-    print(f"  Video : {width}x{height} @ {fps:.1f}fps | "
-          f"{total} frames | {duration:.1f}s")
-    print(f"  Stride: {stride} (analyse every {stride}th frame, "
-          f"effective {fps/stride:.1f}fps analysis rate)")
+    # Step 3: Face override
+    if face_found and motion_score >= MOTION_KEEP_THRESH:
+        return True, "face_and_motion", motion_score, True
 
-    face_det   = load_face_detector()
-    ctx_frames = int(context_interval_sec * fps)
+    if face_found:
+        return True, "face_detected", motion_score, True
 
-    kept            = []
-    dropped_phash   = 0
-    dropped_motion  = 0
-    prev_gray       = None
-    last_hash       = None
-    last_ctx_frame  = -ctx_frames
-    analysis_count  = 0          # how many frames we've actually analysed
-    frame_idx       = 0
-    t_start         = time.time()
+    # Step 2: Motion-based decision
+    if motion_score >= MOTION_KEEP_THRESH:
+        return True, "motion_above_threshold", motion_score, False
 
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
+    if motion_score < MOTION_DISCARD_THRESH:
+        # Step 4: Context frame
+        if current_time_sec - last_kept_time_sec >= CONTEXT_EVERY_SEC:
+            return True, "context_frame", motion_score, False
+        return False, "discarded_static", motion_score, False
 
-        ts = frame_idx / fps
-
-        # ── stride gate: skip most frames but always check context ────────
-        is_ctx_due = (frame_idx - last_ctx_frame) >= ctx_frames
-        if frame_idx % stride != 0 and not is_ctx_due:
-            frame_idx += 1
-            continue
-
-        # ── thumbnail (all analysis on 320x180) ───────────────────────────
-        gray         = thumb_gray(frame)
-        current_hash = phash(gray)
-        analysis_count += 1
-
-        keep   = False
-        reason = []
-
-        # Step 3: Haar face — run every 4th analysed frame (slow step)
-        face_present = False
-        if analysis_count % 4 == 0:
-            face_present = has_face(gray, face_det)
-        if face_present:
-            keep = True
-            reason.append("face_detected")
-
-        if not keep:
-            # Step 1: pHash duplicate
-            if last_hash is not None:
-                if hash_similarity(current_hash, last_hash) > phash_similarity_threshold:
-                    dropped_phash += 1
-                    prev_gray  = gray
-                    frame_idx += 1
-                    continue
-
-            # Step 2: optical flow motion score
-            if prev_gray is not None:
-                score = optical_flow_score(prev_gray, gray)
-                if score < motion_threshold:
-                    dropped_motion += 1
-                    prev_gray  = gray
-                    frame_idx += 1
-                    continue
-                keep = True
-                reason.append(f"motion:{score:.3f}")
-            else:
-                keep = True
-                reason.append("first_frame")
-
-        # Step 4: context continuity
-        if not keep and is_ctx_due:
-            keep = True
-            reason.append("context_continuity")
-
-        if keep:
-            kept.append({
-                "frame_index":   frame_idx,
-                "timestamp_sec": round(ts, 4),
-                "reason":        "+".join(reason) if reason else "context_continuity",
-                "face_detected": face_present,
-            })
-            last_hash      = current_hash
-            last_ctx_frame = frame_idx
-
-        prev_gray  = gray
-        frame_idx += 1
-
-        if frame_idx % 1000 == 0:
-            elapsed = time.time() - t_start
-            speed   = (frame_idx / fps) / elapsed if elapsed > 0 else 0
-            pct     = frame_idx / total * 100
-            print(f"  [{pct:5.1f}%] {frame_idx}/{total} | "
-                  f"kept {len(kept)} | {speed:.2f}x | {elapsed:.0f}s")
-
-    cap.release()
-    elapsed = time.time() - t_start
-    speed   = round(duration / elapsed, 2) if elapsed > 0 else 0
-
-    print(f"  Analysed {analysis_count}/{total} frames "
-          f"(stride={stride}, {100*analysis_count/total:.1f}% of frames)")
-
-    return {
-        "fps": fps, "total_frames": total,
-        "width": width, "height": height, "duration_sec": duration,
-        "kept_frames": kept,
-        "dropped_phash": dropped_phash, "dropped_motion": dropped_motion,
-        "processing_time_sec": round(elapsed, 2),
-        "processing_speed_x":  speed,
-    }
+    return True, "motion_above_threshold", motion_score, False
 
 
-# ── frame extraction ──────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# VIDEO WRITING
+# ---------------------------------------------------------------------------
 
-def extract_intelligent_frames(video_path, segments, out_dir):
-    """Extract full-res kept frames. Called by the Sentio pipeline."""
-    keep_set = {s["frame_index"] for s in segments}
-    cap = cv2.VideoCapture(video_path)
-    idx = written = 0
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-        if idx in keep_set:
-            cv2.imwrite(
-                os.path.join(out_dir, f"frame_{written+1:06d}.jpg"),
-                frame, [cv2.IMWRITE_JPEG_QUALITY, 90]
-            )
-            written += 1
-        idx += 1
-    cap.release()
-    return written
+def write_frames_to_video(kept_frames: list, output_path: Path,
+                          fps: float, frame_size: tuple):
+    """
+    Write kept_frames to a temporary file, then re-encode with ffmpeg to H.264 MP4.
 
+    Steps:
+      1. Write to temp_raw.avi using cv2.VideoWriter (mp4v codec)
+      2. Call ffmpeg: ffmpeg -y -i temp_raw.avi -vcodec libx264 -crf CRF -preset fast out.mp4
+      3. Delete temp_raw.avi
 
-# ── ffmpeg encode ─────────────────────────────────────────────────────────────
+    TODO: implement
+    """
+    temp_path = "temp_raw.avi"
 
-def encode_with_ffmpeg(frames_dir, output_path, fps=12.0):
-    files = sorted(f for f in os.listdir(frames_dir) if f.endswith('.jpg'))
-    if not files:
-        raise RuntimeError("No frames to encode!")
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(temp_path, fourcc, fps, frame_size)
 
-    concat = os.path.join(frames_dir, "concat.txt")
-    dur    = 1.0 / fps
-    with open(concat, "w") as fh:
-        for fname in files:
-            fh.write(f"file '{os.path.join(frames_dir, fname)}'\n")
-            fh.write(f"duration {dur:.6f}\n")
+    for frame in kept_frames:
+        out.write(frame)
 
-    cmd = [
-        "ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", concat,
-        "-c:v", "libx264", "-preset", "fast", "-crf", "23",
-        "-pix_fmt", "yuv420p", "-r", str(fps), output_path
+    out.release()
+
+    command = [
+        "ffmpeg", "-y",
+        "-i", temp_path,
+        "-vcodec", "libx264",
+        "-crf", str(OUTPUT_CRF),
+        "-preset", "fast",
+        str(output_path)
     ]
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    if r.returncode != 0:
-        raise RuntimeError(f"ffmpeg failed:\n{r.stderr[-2000:]}")
-    return r
+
+    subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    Path(temp_path).unlink(missing_ok=True)
 
 
-# ── segments_kept.json ────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# HTML REPORT
+# ---------------------------------------------------------------------------
 
-def build_segments_json(result, video_path):
-    kept = result["kept_frames"]
-    fps  = result["fps"]
-    segs = []
-    if kept:
-        s0 = e0 = kept[0]["frame_index"]
-        for f in kept[1:]:
-            if f["frame_index"] <= e0 + int(fps * 1.5):
-                e0 = f["frame_index"]
-            else:
-                segs.append({"start_frame": s0, "end_frame": e0,
-                              "start_sec": round(s0/fps, 4),
-                              "end_sec":   round(e0/fps, 4)})
-                s0 = e0 = f["frame_index"]
-        segs.append({"start_frame": s0, "end_frame": e0,
-                     "start_sec": round(s0/fps, 4),
-                     "end_sec":   round(e0/fps, 4)})
-    return {
-        "schema_version":        "1.0",
-        "source_video":          os.path.basename(video_path),
-        "total_frames_original": result["total_frames"],
-        "total_frames_kept":     len(kept),
-        "compression_ratio":     round(1 - len(kept)/max(result["total_frames"],1), 4),
-        "processing_speed_x":    result["processing_speed_x"],
-        "fps_original":          result["fps"],
-        "fps_output":            12.0,
-        "duration_sec":          result["duration_sec"],
-        "frames_with_faces":     len([f for f in kept if f["face_detected"]]),
-        "frames_dropped_phash":  result["dropped_phash"],
-        "frames_dropped_motion": result["dropped_motion"],
-        "segments":              segs,
-        "kept_frame_list":       kept,
-    }
+def generate_compression_report(segments: list, stats: dict, output_path: Path):
+    """
+    Write a self-contained HTML file showing:
+      - Original vs compressed size (MB and % reduction)
+      - Original vs compressed duration (seconds)
+      - Processing time
+      - Storyboard grid: one thumbnail per segment
+      - Frames kept vs discarded count
 
+    No CDN. Inline CSS only. Must work offline.
+    TODO: implement
+    """
+    html = f"""
+    <html>
+    <head>
+    <style>
+    body {{ font-family: Arial; margin: 20px; }}
+    .grid {{ display: flex; flex-wrap: wrap; }}
+    .card {{ margin: 10px; }}
+    img {{ border-radius: 8px; }}
+    </style>
+    </head>
+    <body>
 
-# ── HTML report ───────────────────────────────────────────────────────────────
+    <h1>Compression Report</h1>
 
-def build_html_report(schema, orig_bytes, comp_bytes, output_path):
-    kept  = schema["kept_frame_list"]
-    total = schema["total_frames_original"]
-    nk    = schema["total_frames_kept"]
-    spd   = schema["processing_speed_x"]
-    red   = round((1 - comp_bytes/max(orig_bytes,1))*100, 1)
-    fred  = round((1 - nk/max(total,1))*100, 1)
-    cpct  = round(comp_bytes/max(orig_bytes,1)*100, 1)
+    <p><b>Original Size:</b> {stats['original_size_mb']} MB</p>
+    <p><b>Compressed Size:</b> {stats['compressed_size_mb']} MB</p>
+    <p><b>Reduction:</b> {stats['reduction_pct']}%</p>
 
-    samples = kept[::max(1, len(kept)//12)][:12]
-    COLS = ["#4fc3f7","#69f0ae","#ffd740","#ff6d6d","#ab47bc","#26c6da",
-            "#d4e157","#ff7043","#78909c","#42a5f5","#66bb6a","#ef5350"]
-    sb = ""
-    for i, f in enumerate(samples):
-        col   = COLS[i % len(COLS)]
-        badge = '<span class="badge">FACE</span>' if f["face_detected"] else ""
-        sb += (f'<div class="card">'
-               f'<div class="thumb" style="background:linear-gradient(135deg,{col}22,{col}44);'
-               f'border:2px solid {col};">'
-               f'<span class="ts">{f["timestamp_sec"]:.1f}s</span>{badge}</div>'
-               f'<div class="lbl2">{f["reason"][:28]}</div></div>')
+    <p><b>Original Duration:</b> {stats['original_duration_sec']} sec</p>
+    <p><b>Compressed Duration:</b> {stats['compressed_duration_sec']} sec</p>
 
-    seg_rows = "".join(
-        f'<tr><td>{s["start_frame"]}</td><td>{s["end_frame"]}</td>'
-        f'<td>{s["start_sec"]:.2f}s</td><td>{s["end_sec"]:.2f}s</td>'
-        f'<td>{s["end_sec"]-s["start_sec"]:.2f}s</td></tr>'
-        for s in schema["segments"]
-    )
+    <p><b>Processing Time:</b> {stats['processing_time_sec']} sec</p>
 
-    spd_color = "#69f0ae" if spd >= 4 else "#ffd740" if spd >= 2 else "#ef5350"
+    <p><b>Frames Kept:</b> {stats['frames_kept']}</p>
+    <p><b>Frames Discarded:</b> {stats['frames_discarded_reasons']['total_discarded']}</p>
 
-    html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>SentioMind Compression Report</title>
-<style>
-*{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:#0d0d1a;color:#ccd6f6;font-family:'Segoe UI',Arial,sans-serif;padding-bottom:60px}}
-header{{background:linear-gradient(135deg,#0d1a2e,#1a2e4e);padding:32px 44px 24px;border-bottom:2px solid #2e75b6}}
-header h1{{font-size:1.8rem;color:#4fc3f7}}
-header p{{color:#8888aa;margin-top:5px;font-size:.87rem}}
-.c{{max-width:940px;margin:0 auto;padding:0 22px}}
-h2{{font-size:1.05rem;color:#4fc3f7;border-left:3px solid #4fc3f7;padding-left:11px;margin:32px 0 13px;text-transform:uppercase}}
-.stats{{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:11px;margin-top:13px}}
-.stat{{background:#131325;border:1px solid #2a2a5a;border-radius:8px;padding:15px 11px;text-align:center}}
-.v{{font-size:1.65rem;font-weight:700;color:#69f0ae}}
-.n{{font-size:.71rem;color:#8888aa;margin-top:3px;text-transform:uppercase}}
-.w .v{{color:#ffd740}} .b .v{{color:#4fc3f7}}
-.bw{{background:#1a1a3e;border-radius:5px;overflow:hidden;height:23px;margin:5px 0}}
-.bar{{height:100%;display:flex;align-items:center;padding-left:8px;font-size:.76rem;font-weight:600;color:#0d0d1a}}
-table{{width:100%;border-collapse:collapse;font-size:.81rem;margin-top:8px}}
-th{{background:#1a1a3e;color:#4fc3f7;padding:8px 11px;text-align:left;border-bottom:1px solid #2a2a5a}}
-td{{padding:6px 11px;border-bottom:1px solid #1a1a30}}
-tr:hover td{{background:#1a1a2e}}
-.sb{{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}}
-.card{{background:#131325;border:1px solid #2a2a5a;border-radius:6px;width:126px;padding:7px;text-align:center}}
-.thumb{{height:70px;border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}}
-.ts{{font-size:.93rem;font-weight:700;color:#fff;font-family:monospace}}
-.badge{{font-size:.59rem;padding:1px 5px;border-radius:8px;font-weight:600;background:#69f0ae22;color:#69f0ae;border:1px solid #69f0ae}}
-.lbl2{{font-size:.61rem;color:#8888aa;margin-top:4px;word-break:break-all}}
-.step{{background:#131325;border:1px solid #2a2a5a;border-radius:6px;padding:10px 14px;margin-bottom:7px}}
-.sn{{color:#ffd740;font-weight:700;font-size:.85rem}}
-.step p{{color:#a8b2d8;font-size:.82rem;margin-top:2px;line-height:1.6}}
-footer{{text-align:center;color:#555577;font-size:.71rem;margin-top:42px;font-family:monospace}}
-</style></head><body>
-<header><div class="c">
-<h1>&#9650; Smart Behavioral Video Compression</h1>
-<p>SentioMind &nbsp;|&nbsp; {schema['source_video']} &nbsp;|&nbsp;
-{schema['duration_sec']:.1f}s @ {schema['fps_original']:.1f}fps &nbsp;|&nbsp;
-stride={max(1,int(round(schema['fps_original']/20)))}</p>
-</div></header>
-<div class="c">
-<h2>Summary</h2>
-<div class="stats">
-<div class="stat"><div class="v">{red}%</div><div class="n">Size Reduction</div></div>
-<div class="stat"><div class="v">{fred}%</div><div class="n">Frames Dropped</div></div>
-<div class="stat b"><div class="v">{nk}</div><div class="n">Frames Kept</div></div>
-<div class="stat w"><div class="v">{total}</div><div class="n">Total Frames</div></div>
-<div class="stat b"><div class="v">{schema['frames_with_faces']}</div><div class="n">Face Frames</div></div>
-<div class="stat" style="border-color:{spd_color}44"><div class="v" style="color:{spd_color}">{spd}x</div><div class="n">Proc Speed</div></div>
-<div class="stat w"><div class="v">{round(orig_bytes/1e6,1)}MB</div><div class="n">Original</div></div>
-<div class="stat"><div class="v">{round(comp_bytes/1e6,1)}MB</div><div class="n">Compressed</div></div>
-</div>
-<h2>File Size</h2>
-<div style="color:#8888aa;font-size:.77rem;margin-bottom:3px">Original — {round(orig_bytes/1e6,1)} MB</div>
-<div class="bw"><div class="bar" style="width:100%;background:linear-gradient(90deg,#ef5350,#ff7043)">100%</div></div>
-<div style="color:#8888aa;font-size:.77rem;margin-bottom:3px">Compressed — {round(comp_bytes/1e6,1)} MB</div>
-<div class="bw"><div class="bar" style="width:{max(cpct,1)}%;background:linear-gradient(90deg,#4fc3f7,#69f0ae)">{cpct}%</div></div>
-<h2>Algorithm</h2>
-<div class="step"><div class="sn">Step 1 — pHash Deduplication (64-bit DCT)</div>
-<p>Frames &gt;95% perceptually similar to last kept frame dropped as duplicates.
-<strong style="color:#ffd740">{schema['frames_dropped_phash']} frames dropped.</strong>
-Runs on 32×32 DCT of 320×180 thumbnail — no imagehash library.</p></div>
-<div class="step"><div class="sn">Step 2 — Sparse LK Optical Flow (320×180 grid)</div>
-<p>17×12 tracking grid on 320×180 thumbnail. Motion score &lt; 0.05 = static scene = dropped.
-<strong style="color:#ffd740">{schema['frames_dropped_motion']} frames dropped.</strong></p></div>
-<div class="step"><div class="sn">Step 3 — Haar Face Detection (run every 4th analysis frame)</div>
-<p>haarcascade_frontalface_default.xml on 320×180. Face = unconditional keep, overrides Steps 1&amp;2.
-<strong style="color:#69f0ae">{schema['frames_with_faces']} frames preserved.</strong></p></div>
-<div class="step"><div class="sn">Step 4 — Context Continuity (every 3 seconds)</div>
-<p>One frame force-kept every 3s minimum to preserve temporal structure for downstream pipeline.</p></div>
-<div class="step"><div class="sn">Step 5 — H.264 Re-encode via ffmpeg (CRF 23, 12fps, concat demuxer)</div>
-<p>libx264 fast preset. Input {schema['fps_original']:.1f}fps → output 12fps.
-Concat demuxer avoids sequential-numbering gap bug.</p></div>
-<div class="step"><div class="sn">Speed Optimisation — Frame Stride</div>
-<p>Only every {max(1,int(round(schema['fps_original']/20)))}th frame is analysed
-(target analysis rate ≤20fps). Frames between analysis points that are not
-face/motion candidates are skipped. Context gate fires independently of stride.</p></div>
-<h2>Storyboard</h2>
-<div class="sb">{sb}</div>
-<h2>Segments ({len(schema['segments'])})</h2>
-<table><tr><th>Start Frame</th><th>End Frame</th><th>Start</th><th>End</th><th>Duration</th></tr>
-{seg_rows}</table>
-<h2>Drop Breakdown</h2>
-<table><tr><th>Reason</th><th>Frames</th><th>% of Total</th></tr>
-<tr><td>pHash duplicate (&gt;95% similar)</td><td>{schema['frames_dropped_phash']}</td>
-<td>{round(schema['frames_dropped_phash']/max(total,1)*100,1)}%</td></tr>
-<tr><td>Low optical flow (&lt; 0.05)</td><td>{schema['frames_dropped_motion']}</td>
-<td>{round(schema['frames_dropped_motion']/max(total,1)*100,1)}%</td></tr>
-<tr><td>Kept (face / motion / context)</td><td>{nk}</td>
-<td>{round(nk/max(total,1)*100,1)}%</td></tr>
-</table>
-</div>
-<footer>SentioMind Smart Behavioral Compression &nbsp;|&nbsp;
-{spd}x real-time &nbsp;|&nbsp; stride={max(1,int(round(schema['fps_original']/20)))}
-</footer>
-</body></html>"""
+    <h2>Storyboard</h2>
+    <div class="grid">
+    """
 
-    with open(output_path, "w", encoding="utf-8") as fh:
-        fh.write(html)
+    for seg in segments:
+        html += f"""
+        <div class="card">
+        <img src="data:image/jpeg;base64,{seg['thumbnail_b64']}" />
+        <p>Segment {seg['segment_id']}</p>
+        </div>
+        """
 
+    html += "</div></body></html>"
 
-# ── main pipeline ─────────────────────────────────────────────────────────────
+    with open(output_path, "w") as f:
+        f.write(html)
 
-def compress_video(input_path,
-                   output_video="compressed_output.mp4",
-                   output_json="segments_kept.json",
-                   output_html="compression_report.html",
-                   output_fps=12.0):
+def calibrate_motion_threshold(video_path, duration_sec=30):
+    cap = cv2.VideoCapture(str(video_path))
+    fps = cap.get(cv2.CAP_PROP_FPS) or 25.0
+    
+    max_frames = int(fps * duration_sec)
+    
+    prev_gray = None
+    motion_scores = []
+    
+    count = 0
+    
+    while count < max_frames:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        
+        if prev_gray is not None:
+            score = compute_motion_score(prev_gray, gray)
+            motion_scores.append(score)
+        
+        prev_gray = gray
+        count += 1
+    
+    cap.release()
+    
+    if len(motion_scores) == 0:
+        return 0.05
+    
+    # Use percentile (robust to outliers)
+    base_motion = np.percentile(motion_scores, 60)
+    
+    # Slightly above background motion
+    calibrated_thresh = base_motion * 1.5
+    
+    print(f"Auto-calibrated motion threshold: {calibrated_thresh:.4f}")
+    
+    return calibrated_thresh
 
-    print("\n=== SentioMind Smart Behavioral Video Compression ===\n")
-    if not os.path.exists(input_path):
-        raise FileNotFoundError(f"Not found: {input_path}")
-
-    orig_size = os.path.getsize(input_path)
-    print(f"[1/5] Input : {input_path}  ({orig_size/1e6:.1f} MB)")
-
-    print("[2/5] Frame selection (stride + pHash + LK flow + Haar face)...")
-    result = select_frames(input_path)
-    print(f"  Kept {len(result['kept_frames'])}/{result['total_frames']} | "
-          f"{result['processing_speed_x']}x realtime")
-
-    print("[3/5] segments_kept.json...")
-    schema = build_segments_json(result, input_path)
-    with open(output_json, "w") as fh:
-        json.dump(schema, fh, indent=2)
-    print(f"  {len(schema['segments'])} segments, {schema['total_frames_kept']} frames")
-
-    print("[4/5] Extract full-res frames + ffmpeg encode...")
-    tmp = tempfile.mkdtemp(prefix="sentio_")
-    try:
-        n = extract_intelligent_frames(input_path, result["kept_frames"], tmp)
-        print(f"  {n} frames extracted")
-        encode_with_ffmpeg(tmp, output_video, fps=output_fps)
-        print(f"  -> {output_video}")
-    finally:
-        shutil.rmtree(tmp, ignore_errors=True)
-
-    comp_size = os.path.getsize(output_video) if os.path.exists(output_video) else 0
-    reduction = (1 - comp_size / max(orig_size, 1)) * 100
-    print(f"  {comp_size/1e6:.1f} MB | {reduction:.1f}% reduction")
-
-    print("[5/5] HTML report...")
-    build_html_report(schema, orig_size, comp_size, output_html)
-
-    spd = schema['processing_speed_x']
-    print(f"""
-=== DONE ===
-  Original         : {orig_size/1e6:.1f} MB
-  Compressed       : {comp_size/1e6:.1f} MB
-  Reduction        : {reduction:.1f}%
-  Frames kept      : {schema['total_frames_kept']}/{schema['total_frames_original']}
-  Faces detected   : {schema['frames_with_faces']} frames
-  Segments         : {len(schema['segments'])}
-  Speed            : {spd}x real-time {'✓' if spd >= 4 else '(Colab CPU limited — 4x+ on laptop)'}
-  Reduction target : {'✓ PASS' if reduction >= 70 else '✗ FAIL'} (>= 70%)
-""")
-    return schema
-
+# ---------------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    import argparse
-    p = argparse.ArgumentParser(description="SentioMind Video Compression")
-    p.add_argument("input")
-    p.add_argument("--output-video", default="compressed_output.mp4")
-    p.add_argument("--output-json",  default="segments_kept.json")
-    p.add_argument("--output-html",  default="compression_report.html")
-    p.add_argument("--fps", type=float, default=12.0)
-    a = p.parse_args()
-    compress_video(a.input, a.output_video, a.output_json, a.output_html, a.fps)
+    t_start = time.time()
+
+    cascade = cv2.CascadeClassifier(
+        cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+    )
+
+    cap          = cv2.VideoCapture(str(VIDEO_IN))
+    MOTION_DISCARD_THRESH = calibrate_motion_threshold(VIDEO_IN)
+    total        = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    fps_in       = cap.get(cv2.CAP_PROP_FPS) or 25.0
+    fw           = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    fh           = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    duration     = total / fps_in
+    orig_mb      = VIDEO_IN.stat().st_size / 1_000_000
+
+    print(f"Input: {VIDEO_IN}  |  {total} frames  |  {duration:.1f}s  |  {orig_mb:.1f} MB")
+
+    kept_frames = []
+    segments    = []
+    prev_frame  = None
+    prev_gray   = None
+    prev_hash   = ""
+    last_kept_t = -999.0
+    cur_seg     = None
+    disc_dup    = 0
+    disc_stat   = 0
+
+    frame_idx = 0
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        ts = frame_idx / fps_in
+
+        keep, reason, motion, face = should_keep_frame(
+            frame, prev_frame, prev_hash, last_kept_t, ts, cascade
+        )
+
+        if keep:
+            kept_frames.append(frame.copy())
+            prev_hash   = compute_phash(frame)
+            last_kept_t = ts
+
+            if cur_seg is None or (ts - cur_seg["end_sec"]) > 2.5:
+                if cur_seg:
+                    segments.append(cur_seg)
+                cur_seg = {
+                    "segment_id":            len(segments) + 1,
+                    "start_sec":             round(ts, 2),
+                    "end_sec":               round(ts, 2),
+                    "frames_in_segment":     1,
+                    "reason_kept":           reason,
+                    "face_count_in_segment": 1 if face else 0,
+                    "motion_score_avg":      round(motion, 3),
+                    "thumbnail_b64":         frame_to_b64_thumb(frame),
+                }
+            else:
+                cur_seg["end_sec"]               = round(ts, 2)
+                cur_seg["frames_in_segment"]    += 1
+                cur_seg["face_count_in_segment"] += 1 if face else 0
+        else:
+            if "duplicate" in reason:
+                disc_dup  += 1
+            else:
+                disc_stat += 1
+
+        prev_frame = frame
+        prev_gray  = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        frame_idx += 1
+
+    if cur_seg:
+        segments.append(cur_seg)
+    cap.release()
+
+    print(f"Kept {len(kept_frames)} / {total} frames across {len(segments)} segments")
+    print("Writing compressed video ...")
+    write_frames_to_video(kept_frames, VIDEO_OUT, OUTPUT_FPS, (fw, fh))
+
+    comp_mb = VIDEO_OUT.stat().st_size / 1_000_000 if VIDEO_OUT.exists() else 0.0
+    t_end   = time.time()
+
+    stats = {
+        "source_video":             str(VIDEO_IN),
+        "compressed_video":         str(VIDEO_OUT),
+        "original_size_mb":         round(orig_mb, 2),
+        "compressed_size_mb":       round(comp_mb, 2),
+        "reduction_pct":            round((1 - comp_mb / (orig_mb + 1e-9)) * 100, 1),
+        "original_duration_sec":    round(duration, 2),
+        "compressed_duration_sec":  round(len(kept_frames) / OUTPUT_FPS, 2),
+        "original_fps":             round(fps_in, 2),
+        "output_fps":               OUTPUT_FPS,
+        "frames_original":          total,
+        "frames_kept":              len(kept_frames),
+        "processing_time_sec":      round(t_end - t_start, 2),
+        "segments":                 segments,
+        "frames_discarded_reasons": {
+            "near_duplicate_phash": disc_dup,
+            "low_motion_no_face":   disc_stat,
+            "total_discarded":      total - len(kept_frames),
+        },
+    }
+
+    with open(SEGMENTS_JSON_OUT, "w") as f:
+        json.dump(stats, f, indent=2)
+
+    generate_compression_report(segments, stats, REPORT_HTML_OUT)
+
+    print()
+    print("=" * 55)
+    print(f"  Done in {stats['processing_time_sec']}s")
+    print(f"  Size:     {orig_mb:.1f} MB  →  {comp_mb:.1f} MB  ({stats['reduction_pct']}% smaller)")
+    print(f"  Duration: {duration:.1f}s  →  {stats['compressed_duration_sec']:.1f}s")
+    print(f"  Report  → {REPORT_HTML_OUT}")
+    print(f"  JSON    → {SEGMENTS_JSON_OUT}")
+    print("=" * 55)
